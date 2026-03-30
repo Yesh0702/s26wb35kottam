@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  
+  //- Adjusted array to match your actual filenames from the screenshot
+  - var image_names = ["keyboard.jpg", "laptop.jpg", "monitor.jpg", "mouse.jpg", "phone.jpg"]
+
+  - for(let i=0; i<3; i++) {
+    - var randomIndex = Math.floor(Math.random()*5)
+    - var imageName = image_names[randomIndex]
+    
+    //- This path points directly to your public/images folder
+    img(src=`/images/${imageName}`, alt=`${imageName}`, height="300", width="300")
+  - }
