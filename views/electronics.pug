@@ -14,10 +14,16 @@ block content
   //- Part 6, Steps 2, 3, & 4: Outermost container and row
   div(class="container-fluid")
     div(class="row")
-      //- Part 6, Step 5: Iterate over the objects in results
-      each item in results
-        //- Part 6, Step 6: Inner div for each object with col-sm-2
-        div(class="col-sm-2")
+      //- BONUS: Iterate over results getting both value (item) and index
+      each item, index in results
+        //- BONUS: Add onclick property that calls buy(index)
+        div(class="col-sm-2", onclick=`buy(${index})`)
           h3 #{item.item_name}
           p Brand: #{item.brand}
           p Price: $#{item.price}
+
+  //- BONUS: Script block for the buy function
+  script.
+    function buy(index) {
+      alert(`You purchased item ${index + 1}.`);
+    }
