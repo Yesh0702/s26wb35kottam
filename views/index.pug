@@ -3,4 +3,26 @@ extends layout
 block content
   h1= title
   p This is my unique paragraph for the assignment, running on my local Express server.
-  button(type="button", class="btn btn-secondary") Sample Button
+  
+  //- Step 12 & 14: Button with Bootstrap styles and onclick event
+  button(type="button", class="btn btn-secondary", onclick="reduce()") Sample Button
+
+  //- Part 4, Step 1: Div with id "use" and initial text
+  div#use take some away
+
+  //- Part 4, Step 3: Script block for the reduction logic
+  script.
+    let current = 11;
+    let quantity = 2;
+
+    function reduce() {
+      current = current - quantity;
+      
+      // If current becomes negative, set it to zero
+      if (current < 0) {
+        current = 0;
+      }
+
+      // Replace the contents of the div
+      document.getElementById('use').innerText = `Reduced by ${quantity} to ${current}`;
+    }
