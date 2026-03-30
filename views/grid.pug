@@ -2,5 +2,36 @@ extends layout
 
 block content
   h1= title
-  p Rows: #{query.rows}
-  p Columns: #{query.cols}
+  
+  //- Step 3: Paragraph showing the raw query values
+  p Original Rows: #{query.rows}, Original Columns: #{query.cols}
+
+  //- Step 4: Convert strings to Numbers
+  - let rows = Number(query.rows)
+  - let cols = Number(query.cols)
+
+  //- Step 5: Check if they are integers
+  if (!Number.isInteger(rows) || !Number.isInteger(cols))
+    p Error: Rows and columns must be integers.
+  
+  //- Step 6 & 7: Check rows range (2 to 12)
+  else if (rows < 2 || rows > 12)
+    p Error: Rows must be between 2 and 12.
+
+  //- Step 8: Check columns range (2 to 12)
+  else if (cols < 2 || cols > 12)
+    p Error: Columns must be between 2 and 12.
+
+  //- Step 9 & 10: Input is safe, start the table
+  else
+    table#outer
+      //- Step 13: Outer loop for rows
+      - for(let i=0; i<rows; i++) {
+        //- Step 14: Create a table row
+        tr#middle
+          //- Step 15: Inner loop for columns
+          - for(let j=0; j<cols; j++) {
+            //- Step 16: Data cell with the value (2 * row - col)
+            td= (i * 2) - j
+          - }
+      - }
