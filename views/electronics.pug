@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+
+  //- Part 6, Step 1: Unbuffered server-side code (the array)
+  -
+    let results = [
+      { item_name: "Smartphone", brand: "Apple", price: 999 },
+      { item_name: "Laptop", brand: "Dell", price: 1200 },
+      { item_name: "Headphones", brand: "Sony", price: 350 }
+    ]
+
+  //- Part 6, Steps 2, 3, & 4: Outermost container and row
+  div(class="container-fluid")
+    div(class="row")
+      //- Part 6, Step 5: Iterate over the objects in results
+      each item in results
+        //- Part 6, Step 6: Inner div for each object with col-sm-2
+        div(class="col-sm-2")
+          h3 #{item.item_name}
+          p Brand: #{item.brand}
+          p Price: $#{item.price}
